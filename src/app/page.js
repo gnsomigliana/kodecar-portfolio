@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import GaleriaProyectos from "@/components/GaleriaProyectos";
 
 // 1. Función para buscar datos en Django
-async function buscarProyectos() {
+/*async function buscarProyectos() {
   try {
     // IMPORTANTE: Asegúrate de que esta URL sea la correcta de tu Django
     // 'no-store' asegura que siempre busque datos frescos y no use caché vieja
@@ -23,9 +23,10 @@ async function buscarProyectos() {
     return null; // Retorna null si falla para usar el backup
   }
 }
+*/ 
 
 // 2. El componente ahora es 'async' para poder esperar los datos
-export default async function Home() {
+export default function Home() {
   // Datos de respaldo por si la API está apagada
   const backupData = [
     {
@@ -57,11 +58,11 @@ export default async function Home() {
   ];
 
   // 3. Ejecutamos la función de búsqueda
-  const proyectosApi = await buscarProyectos();
+ // const proyectosApi = await buscarProyectos();
 
   // Si la API respondió, usamos sus datos. Si no, usamos el backup.
-  const proyectos = proyectosApi || backupData;
-  const apiStatus = proyectosApi ? "Conectado" : "Modo Demo";
+  const proyectos = backupData //proyectosApi || backupData;
+  const apiStatus = "Modo Demo"//proyectosApi ? "Conectado" : "Modo Demo";
 
   return (
     <div className="min-h-screen bg-white">
@@ -209,7 +210,7 @@ export default async function Home() {
               <p className="text-slate-500 mt-2">Soluciones escalables desarrolladas por nuestro equipo.</p>
             </div>
             <span className="text-slate-400 text-sm italic">
-              API Status: <span className={proyectosApi ? "text-green-500 font-bold" : "text-orange-400 font-bold"}>{apiStatus}</span>
+              API Status: <span className={/*proyectosApi ? "text-green-500 font-bold" : */ "text-orange-400 font-bold"}>{apiStatus}</span>
             </span>
           </div>
 
