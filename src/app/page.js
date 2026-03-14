@@ -32,11 +32,19 @@ function useReveal() {
 }
 
 export default function Home() {
-  // Refs para animaciones
+  // 1. Nuevo estado para la animación inicial
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Refs para animaciones que ya tenías
   const [valoresRef, valoresVisible] = useReveal();
   const [tecnologiasRef, tecnologiasVisible] = useReveal();
   const [proyectosRef, proyectosVisible] = useReveal();
   const [contactoRef, contactoVisible] = useReveal();
+
+  // 2. Este efecto se ejecuta una vez al entrar a la página
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const backupData = [
     {
@@ -71,7 +79,7 @@ export default function Home() {
 
   return (
     // FONDO: Gradiente de Azul oscuro a Negro, texto blanco
-    <div className="min-h-screen bg-gradient-to-br from-[#040b16] via-[#02050a] to-black text-white overflow-x-hidden font-sans selection:bg-blue-600 selection:text-white">
+    <div className={`min-h-screen bg-gradient-to-br from-[#040b16] via-[#02050a] to-black text-white overflow-x-hidden font-sans selection:bg-blue-600 selection:text-white transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       
       <Navbar />
 
