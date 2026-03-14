@@ -121,8 +121,12 @@ export default function Home() {
         <div className={`max-w-7xl mx-auto px-6 transition-all duration-1000 transform ${valoresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
             <div className="px-4">
-              <span className="block text-3xl font-black text-blue-500 mb-1">+5</span>
-              <span className="text-xs text-gray-400 uppercase tracking-widest font-bold">Proyectos Entregados</span>
+              <span className="block text-3xl font-black text-blue-500 mb-1">100%</span>
+              <span className="text-xs text-gray-400 uppercase tracking-widest font-bold">Ingenieria aplicada</span>
+            </div>
+            <div className="px-4">
+              <span className="block text-3xl font-black text-white mb-1">UI/UX</span>
+              <span className="text-xs text-gray-400 uppercase tracking-widest font-bold">Diseño Centrado</span>
             </div>
             <div className="px-4">
               <span className="block text-3xl font-black text-white mb-1">100%</span>
@@ -132,10 +136,7 @@ export default function Home() {
               <span className="block text-3xl font-black text-blue-500 mb-1">24/7</span>
               <span className="text-xs text-gray-400 uppercase tracking-widest font-bold">Soporte Técnico</span>
             </div>
-            <div className="px-4">
-              <span className="block text-3xl font-black text-white mb-1">UI/UX</span>
-              <span className="text-xs text-gray-400 uppercase tracking-widest font-bold">Diseño Centrado</span>
-            </div>
+            
           </div>
         </div>
       </section>
@@ -326,7 +327,7 @@ export default function Home() {
               <a href="https://wa.me/5492281491955" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 font-medium transition-colors text-sm flex items-center gap-2">
                 WhatsApp
               </a>
-              <a href="mailto:contacto@kodec.ar" className="text-gray-400 hover:text-blue-500 font-medium transition-colors text-sm flex items-center gap-2">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kodecar25@gmail.com&su=Consulta%20sobre%20desarrollo%20de%20software" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 font-medium transition-colors text-sm flex items-center gap-2">
                 Email
               </a>
             </div>
