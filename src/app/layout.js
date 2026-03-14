@@ -6,6 +6,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Kodec.ar | Soluciones Digitales",
   description: "Desarrollo de software y soluciones digitales.",
+  icons: {
+    icon: '/logo.png', // <-- ¡Esta es la línea mágica!
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -1,25 +1,21 @@
-"use client"; // ¡Vital! Esto habilita la interactividad
+"use client";
 import { useState } from "react";
-import Image from "next/image";
 
 export default function GaleriaProyectos({ proyectos }) {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Abrir modal
   const openGallery = (proyecto) => {
     setSelectedProject(proyecto);
-    setCurrentIndex(0); // Empezar siempre por la primera foto
-    document.body.style.overflow = "hidden"; // Bloquear scroll del fondo
+    setCurrentIndex(0);
+    document.body.style.overflow = "hidden";
   };
 
-  // Cerrar modal
   const closeGallery = () => {
     setSelectedProject(null);
-    document.body.style.overflow = "auto"; // Reactivar scroll
+    document.body.style.overflow = "auto";
   };
 
-  // Navegación siguiente
   const nextImage = (e) => {
     e.stopPropagation();
     if (selectedProject) {
@@ -29,7 +25,6 @@ export default function GaleriaProyectos({ proyectos }) {
     }
   };
 
-  // Navegación anterior
   const prevImage = (e) => {
     e.stopPropagation();
     if (selectedProject) {
@@ -41,93 +36,84 @@ export default function GaleriaProyectos({ proyectos }) {
 
   return (
     <>
-      {/* --- GRILLA DE PROYECTOS --- */}
+      {/* GRILLA OSCURA */}
       <div className="grid md:grid-cols-2 gap-8">
         {proyectos.map((proyecto) => (
           <div
             key={proyecto.id}
             onClick={() => openGallery(proyecto)}
-            className="group relative bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-blue-200 transition-all cursor-pointer hover:shadow-lg"
+            className="group relative bg-white/5 rounded-[2rem] p-8 border border-white/10 hover:border-white/30 transition-all cursor-pointer hover:bg-white/10"
           >
-            <div className="text-xs font-bold text-blue-600 mb-4 tracking-widest uppercase">
+            <div className="text-xs font-bold text-blue-400 mb-4 tracking-widest uppercase">
               {proyecto.tag}
             </div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition">
+            <h3 className="text-3xl font-black text-white mb-3 group-hover:text-blue-100 transition">
               {proyecto.nombre}
             </h3>
-            <p className="text-slate-600 mb-6 leading-relaxed">
+            <p className="text-gray-400 mb-8 leading-relaxed text-lg">
               {proyecto.desc}
             </p>
             
-            {/* Preview de la imagen principal */}
-            <div className="w-full h-48 bg-slate-200 rounded-xl mb-6 overflow-hidden relative group-hover:opacity-90 transition-opacity">
-               {/* Usamos la primera imagen del array como portada */}
+            <div className="w-full h-56 bg-black/50 rounded-2xl mb-6 overflow-hidden relative border border-white/5 group-hover:border-white/20 transition-all">
                <img 
                  src={proyecto.imagenes[0]} 
                  alt={proyecto.nombre} 
-                 className="w-full h-full object-cover"
+                 className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500"
                />
             </div>
 
-            <div className="font-bold text-slate-900 flex items-center gap-2 group-hover:gap-4 transition-all">
-              Ver Galería <span className="text-blue-600">→</span>
+            <div className="font-bold text-white text-sm uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
+              Ver Galería <span className="text-blue-500">→</span>
             </div>
           </div>
         ))}
       </div>
 
-      {/* --- MODAL / GALERÍA (Solo aparece si hay selectedProject) --- */}
+      {/* MODAL */}
       {selectedProject && (
         <div 
-          className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={closeGallery} // Click afuera cierra
+          className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
+          onClick={closeGallery}
         >
-          {/* Contenedor de la imagen */}
-          <div className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10" onClick={(e) => e.stopPropagation()}>
+          <div className="relative w-full max-w-6xl aspect-video bg-[#02050a] rounded-3xl overflow-hidden shadow-2xl border border-white/10" onClick={(e) => e.stopPropagation()}>
             
-            {/* Imagen Actual */}
             <img 
               src={selectedProject.imagenes[currentIndex]} 
               alt={`Imagen ${currentIndex + 1}`} 
               className="w-full h-full object-contain"
             />
 
-            {/* Botón Cerrar */}
             <button 
               onClick={closeGallery}
-              className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-white hover:text-black transition z-20"
+              className="absolute top-6 right-6 bg-white/10 backdrop-blur-md text-white p-3 rounded-full hover:bg-white hover:text-black transition-all z-20"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
 
-            {/* Flecha Izquierda */}
             <button 
               onClick={prevImage}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-white hover:text-black transition hover:scale-110"
+              className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md text-white p-4 rounded-full hover:bg-white hover:text-black transition-all hover:scale-110"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/></svg>
             </button>
 
-            {/* Flecha Derecha */}
             <button 
               onClick={nextImage}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-white hover:text-black transition hover:scale-110"
+              className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md text-white p-4 rounded-full hover:bg-white hover:text-black transition-all hover:scale-110"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/></svg>
             </button>
 
-            {/* Indicador de posición (puntitos) */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
               {selectedProject.imagenes.map((_, idx) => (
                 <div 
                   key={idx} 
-                  className={`w-2 h-2 rounded-full transition-all ${idx === currentIndex ? 'bg-white scale-125' : 'bg-white/40'}`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-white scale-150 w-6' : 'bg-white/30'}`}
                 />
               ))}
             </div>
 
-            {/* Título flotante */}
-            <div className="absolute top-4 left-4 bg-black/60 px-4 py-1 rounded-full text-white text-sm backdrop-blur-md">
+            <div className="absolute top-6 left-6 bg-black/80 border border-white/10 px-5 py-2 rounded-full text-white text-sm font-bold tracking-widest backdrop-blur-md uppercase">
               {selectedProject.nombre} • {currentIndex + 1} / {selectedProject.imagenes.length}
             </div>
 
