@@ -76,12 +76,12 @@ export default function Home() {
 
   return (
     // Se agregó 'relative' y 'w-full' para asegurar la contención total
-    <div className={`relative min-h-screen w-full bg-gradient-to-br from-[#040b16] via-[#02050a] to-black text-white overflow-x-hidden font-sans selection:bg-blue-600 selection:text-white transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+    <div className={`relative min-h-dvh w-full bg-gradient-to-br from-[#040b16] via-[#02050a] to-black text-white overflow-x-clip font-sans selection:bg-blue-600 selection:text-white transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       
       <Navbar />
 
       {/* --- HERO SECTION --- */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 md:pt-20 overflow-hidden w-full">
+      <section id="home" className="relative min-h-dvh flex items-center justify-center pt-24 md:pt-20 overflow-hidden w-full">
         
         {/* Glow de fondo corregido para móvil */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-blue-600/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none animate-pulse"></div>
