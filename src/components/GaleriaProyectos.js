@@ -72,39 +72,40 @@ export default function GaleriaProyectos({ proyectos }) {
       {/* MODAL */}
       {selectedProject && (
         <div 
-          className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
+          className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-md flex items-center justify-center p-0 md:p-4"
           onClick={closeGallery}
         >
-          <div className="relative w-full max-w-6xl aspect-video bg-[#02050a] rounded-3xl overflow-hidden shadow-2xl border border-white/10" onClick={(e) => e.stopPropagation()}>
+          <div className="relative w-full h-full md:max-w-6xl md:h-auto md:aspect-video bg-[#02050a] md:rounded-3xl overflow-hidden shadow-2xl border-0 md:border border-white/10 flex flex-col items-center justify-center" onClick={(e) => e.stopPropagation()}>
             
             <img 
               src={selectedProject.imagenes[currentIndex]} 
               alt={`Imagen ${currentIndex + 1}`} 
-              className="w-full h-full object-contain"
+              className="w-full h-full md:h-auto object-contain"
             />
 
+            {/* Controles de navegación y cierre */}
             <button 
               onClick={closeGallery}
-              className="absolute top-6 right-6 bg-white/10 backdrop-blur-md text-white p-3 rounded-full hover:bg-white hover:text-black transition-all z-20"
+              className="absolute top-4 right-4 md:top-6 md:right-6 bg-black/50 md:bg-white/10 backdrop-blur-md text-white p-3 rounded-full hover:bg-white hover:text-black transition-all z-20"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
 
             <button 
               onClick={prevImage}
-              className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md text-white p-4 rounded-full hover:bg-white hover:text-black transition-all hover:scale-110"
+              className="absolute left-2 top-1/2 -translate-y-1/2 md:left-6 bg-black/50 md:bg-white/10 backdrop-blur-md text-white p-3 md:p-4 rounded-full hover:bg-white hover:text-black transition-all hover:scale-110 z-20"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/></svg>
+              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/></svg>
             </button>
 
             <button 
               onClick={nextImage}
-              className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md text-white p-4 rounded-full hover:bg-white hover:text-black transition-all hover:scale-110"
+              className="absolute right-2 top-1/2 -translate-y-1/2 md:right-6 bg-black/50 md:bg-white/10 backdrop-blur-md text-white p-3 md:p-4 rounded-full hover:bg-white hover:text-black transition-all hover:scale-110 z-20"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/></svg>
+              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/></svg>
             </button>
 
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+            <div className="absolute bottom-8 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20 bg-black/20 p-2 rounded-full backdrop-blur-sm md:bg-transparent md:backdrop-blur-none">
               {selectedProject.imagenes.map((_, idx) => (
                 <div 
                   key={idx} 
@@ -113,7 +114,7 @@ export default function GaleriaProyectos({ proyectos }) {
               ))}
             </div>
 
-            <div className="absolute top-6 left-6 bg-black/80 border border-white/10 px-5 py-2 rounded-full text-white text-sm font-bold tracking-widest backdrop-blur-md uppercase">
+            <div className="absolute top-4 left-4 md:top-6 md:left-6 bg-black/80 border border-white/10 px-4 py-2 md:px-5 rounded-full text-white text-xs md:text-sm font-bold tracking-widest backdrop-blur-md uppercase max-w-[60%] truncate z-20">
               {selectedProject.nombre} • {currentIndex + 1} / {selectedProject.imagenes.length}
             </div>
 

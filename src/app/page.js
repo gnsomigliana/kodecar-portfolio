@@ -163,9 +163,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[auto] md:auto-rows-[250px]">
             
-            <div className="md:col-span-8 relative group rounded-3xl overflow-hidden bg-[#0a1120] border border-white/5 p-8 md:p-10 flex flex-col justify-between hover:border-emerald-500/50 transition-all duration-500 shadow-xl min-h-[250px]">
+            <div className="md:col-span-8 relative group rounded-3xl overflow-hidden bg-[#0a1120] border border-white/5 p-8 md:p-10 flex flex-col items-center text-center md:items-start md:text-left justify-between hover:border-emerald-500/50 transition-all duration-500 shadow-xl min-h-[250px]">
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative z-10">
+                <div className="relative z-10 flex flex-col items-center md:items-start">
                     <div className="w-16 h-16 bg-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                     </div>
